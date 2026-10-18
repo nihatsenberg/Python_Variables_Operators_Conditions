@@ -239,6 +239,7 @@ else:
 
 #Task 15
 print('Task 15: Determine result based on exam score, school score and age')
+age = int(input('Enter your age: '))
 if age < 16:
     print('Result: Rejected')
     print('Reason: Age is below 16')
@@ -266,3 +267,182 @@ elif exam_score >= 300:
 else:
     print('Result: Rejected')
     print('Reason: Exam score is below 300')
+
+#task16
+exam_score = int(input('Enter exam score: '))
+if 0<=exam_score<=100:
+    pass_score = 51
+    result=['pass','fail']
+    status = result[exam_score<=pass_score]
+    print(status)
+else:
+    print('Invalid exam score')
+
+#task17
+order_total = int(input('Enter order total:'))
+membership = input('Do You have membership (Yes/No)')
+membership.lower()
+fee = 0
+if order_total <= 0:
+    print("invalid order total")
+if membership == 'yes' or order_total <= 50:
+    fee = fee
+else:
+    fee = fee + 5
+print('Delivery fee = ',fee,'Final Total = ',order_total+fee)
+
+#task18
+day = int(input('Enter Day:'))
+match day:
+    case 1:
+        print('Monday')
+    case 2:
+        print("Tuesday")
+    case 3:
+        print("Wednesday")
+    case 4:
+        print("Thursday")
+    case 5:
+        print("Friday")
+    case 6:
+        print("Weekend")
+    case 7:
+        print("Weekend")
+    case _:
+        print("Invalid day")
+
+#task 19
+code = input('Enter Code:')
+code = code.upper()
+print(code)
+quantity = int(input('Enter Quantity:'))
+total = 0
+if 1 <= quantity <= 10:
+    match code:
+        case 'T':
+            total = total+2
+        case 'C':
+            total = total+4
+        case 'J':
+            total = total+3
+        case _:
+            print('Invalid code')
+    total = total * quantity
+    if total >=20:
+        print('Large Order',total)   
+    else:
+        print('Regular Order',total)
+else:
+    print('Invalid Quantity')
+
+#task 20
+student_id = input('Enter Student Id')
+if len(student_id) == 8:
+    if student_id.isascii() == True:
+        print('Student Id Accepted')
+    else:
+        print('Invalid Student Id')
+
+#Task 21
+student_id = input('Enter Student Id: ')
+test = True
+for i in range(0,len(student_id)):
+    if student_id[i] == ' ':
+        test = False
+if test == True and len(student_id) == 8 and student_id.isascii() == True:
+    print('Student id accepted')
+else:
+    print('Invalid Student Id')
+
+#task 22
+phone_number = input('Enter Phone Number')
+providers = phone_number[0:3]
+test = False
+if phone_number[0] == '0' and len(phone_number) == 10 and phone_number.isascii() == True:
+    match providers:
+        case '050':
+            test = True
+        case '051':
+            test = True
+        case '055':
+            test = True
+        case '070':
+            test = True
+        case '077':
+            test = True
+        case '099':
+            test = True
+        case _:
+            test = False
+if test == True:
+    print('Accept')
+else:
+    print('Reject')
+
+#task 23
+balance = 1000
+stored_pin = '0427'
+enter_pin = input('Enter Pin')
+enter_amount=input('Enter Amount')
+fee=0
+if not (len(enter_pin)== 4 and enter_pin.isascii()==True and enter_pin.isdecimal()==True ):
+    print('Invalid Pin')
+elif enter_pin != stored_pin:
+    print("Pin is not correct")
+elif not (enter_amount and enter_amount.isascii()==True and enter_amount.isdecimal()==True):
+    print('Invalid Amount')
+else:
+    amount = int(enter_amount)
+    if not(10 <=amount<=500):
+        print("Select between 10 and 500")
+    elif amount % 10 != 0:
+        print('Select amount 10,20,30 etc.')
+    if amount <= 200:
+        fee = 2
+total = fee + amount
+if total > balance:
+    print("Not Enough Money")
+else:
+    balance = balance - total
+    print("Ugurlu Emeliyat",'Cixarilan mebleg = ',amount,'Azn','komissiya =',fee,'Yeni Balans = ',balance)
+
+#task24
+product_code=input('Enter Product Code:')
+product_code=product_code.upper()
+coupon = input('Enter Coupon code:')
+quantity = input('Enter Quantity between 1 and 5:')
+delivery = input('Enter Delivery:')
+delivery = delivery.upper()
+delivery_fee = 0
+if not (quantity.isascii != True) and not (1<= quantity <=5):
+    print("invalid quantity")
+total_amount = 0
+subtotal = 0
+delivery_fee = 0
+match product_code:
+    case 'K':
+        print('Keyboard')
+        subtotal = subtotal + 40
+    case 'M':
+        print('Mouse')
+        subtotal = subtotal + 20
+    case 'H':
+        print("Headphones")
+        subtotal = subtotal + 60
+    case _:
+        print('Invalid Code')
+total_amount = int(quantity)*subtotal
+if coupon == 'SAVE10':
+    if total_amount >=100:
+        total_amount = total_amount - ((total_amount*10)/100)
+        print('10% Discount')
+match delivery:
+    case 'P':
+        print('Free Delivery')
+    case 'S':
+        if total_amount <= 80:
+            print('Free Delivery')
+        else:
+            delivery_fee = delivery_fee + 5
+total_amount = total_amount + delivery_fee
+print('quantity = ',quantity,'subtotal = ',subtotal,'total amount = ',total_amount)
